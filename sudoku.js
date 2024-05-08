@@ -30,7 +30,7 @@ function isValid(grid, row, col, num) {
     for (var i = startRow; i < startRow + 3; i++) {
         for (var j = startCol; j < startCol + 3; j++) {
             if (grid[i][j] === num) {
-                return false;   
+                return false;
             }
         }
     }
