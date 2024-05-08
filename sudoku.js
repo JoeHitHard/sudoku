@@ -130,7 +130,6 @@ var activeButton = "";
 
 function boardButtonClick (buttonId) {
     let p = document.getElementById(buttonId + "t");
-    p.classList.remove('selected');
     if (p.textContent != "X") {
         return;
     }
@@ -153,11 +152,11 @@ for (let i = 1; i <= 9; i++) {
             boardButtonClick(buttonId);
         });
         document.getElementById(buttonId).addEventListener('mouseenter', function () {
-            handleHoverEffect(buttonId, "hover-effect");
+            handleAddEffect(buttonId, "hover-effect");
         });
         document.getElementById(buttonId).addEventListener('mouseleave', 
         function () {
-            removeHoverEffect("hover-effect");
+            removeEffect("hover-effect");
         });
     }
 }
