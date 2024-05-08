@@ -98,7 +98,7 @@ function handleAddEffect(buttonId, effect) {
     var startCol = Math.floor((col - 1) / 3) * 3 + 1;
     for (var i = startRow; i < startRow + 3; i++) {
         for (var j = startCol; j < startCol + 3; j++) {
-            document.getElementById(i + '' + j).classList.add(effect);
+            document.getElementById(i + '' + j ).classList.add(effect);
         }
     }
 }
