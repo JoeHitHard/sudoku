@@ -75,22 +75,22 @@ function displaySudoku(grid) {
     }
 }
 
-function handleHoverEffect(buttonId) {
+function handleAddEffect(buttonId, effect) {
 
     var row = parseInt(buttonId[0]);
     var col = parseInt(buttonId[1]);
 
 
-    document.getElementById(buttonId).classList.add('hover-effect');
+    document.getElementById(buttonId).classList.add(effect);
 
 
     for (var i = 1; i <= 9; i++) {
-        document.getElementById(row + '' + i).classList.add('hover-effect');
+        document.getElementById(row + '' + i).classList.add(effect);
     }
 
 
     for (var j = 1; j <= 9; j++) {
-        document.getElementById(j + '' + col).classList.add('hover-effect');
+        document.getElementById(j + '' + col).classList.add(effect);
     }
 
 
@@ -98,16 +98,16 @@ function handleHoverEffect(buttonId) {
     var startCol = Math.floor((col - 1) / 3) * 3 + 1;
     for (var i = startRow; i < startRow + 3; i++) {
         for (var j = startCol; j < startCol + 3; j++) {
-            document.getElementById(i + '' + j).classList.add('hover-effect');
+            document.getElementById(i + '' + j).classList.add(effect);
         }
     }
 }
 
 
-function removeHoverEffect() {
-    var cells = document.querySelectorAll('.hover-effect');
+function removeEffect(effect) {
+    var cells = document.querySelectorAll('.' + effect);
     cells.forEach(function (cell) {
-        cell.classList.remove('hover-effect');
+        cell.classList.remove(effect);
     });
 }
 
@@ -126,13 +126,39 @@ var originalSudoku = randomSudoku;
 randomSudoku = removeSome(randomSudoku);
 displaySudoku(randomSudoku);
 
+var activeButton = "";
+
+function boardButtonClick (buttonId) {
+    let p = document.getElementById(buttonId + "t");
+    p.classList.remove('selected');
+    if (p.textContent != "X") {
+        return;
+    }
+    if (buttonId == activeButton) {
+        document.getElementById(activeButton).classList.remove('selected');
+        activeButton = "";
+        return;
+    }
+    if (buttonId != activeButton && activeButton != "") {
+        document.getElementById(activeButton).classList.remove('selected');
+    }
+    activeButton = buttonId;
+    document.getElementById(buttonId).classList.add('selected');
+}
+
 for (let i = 1; i <= 9; i++) {
     for (let j = 1; j <= 9; j++) {
         let buttonId = '' + i + j;
-        document.getElementById(buttonId).addEventListener('mouseenter', function () {
-            handleHoverEffect(buttonId);
+        document.getElementById(buttonId).addEventListener('click', function () {
+            boardButtonClick(buttonId);
         });
-        document.getElementById(buttonId).addEventListener('mouseleave', removeHoverEffect);
+        document.getElementById(buttonId).addEventListener('mouseenter', function () {
+            handleHoverEffect(buttonId, "hover-effect");
+        });
+        document.getElementById(buttonId).addEventListener('mouseleave', 
+        function () {
+            removeHoverEffect("hover-effect");
+        });
     }
 }
 

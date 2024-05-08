@@ -9,13 +9,13 @@ body {
     height: 100vh;
 }
 
-.container {
+/* .container {
     max-width: 600px;
     padding: 20px;
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
+} */
 
 h1 {
     text-align: center;
@@ -50,7 +50,8 @@ button:hover {
     background-color: #f0f0f0;
 }
 
-@media screen and (max-width: 600px) {
+
+/* @media screen and (max-width: 600px) {
     .container {
         padding: 10px;
     }
@@ -60,27 +61,35 @@ button:hover {
         height: 30px;
         font-size: 14px;
     }
-}
+} */
 
 .hover-effect {
     background-color: #f0f0f0;
+}
+
+.hover-effect.selected {
+    background-color: #00ff00;
 }
 
 .missing {
     background-color: #fda8a8;
 }
 
+.selected {
+    background-color: #00ff00;
+}
+
 .board {
     padding-left: 20px;
 }
 
-#choices {
+.choices {
     display: flex;
     justify-content: center;
     margin-top: 20px;
 }
 
-#choices button {
+.choices button {
     margin: 5px;
     padding: 0;
     border: none;
@@ -89,14 +98,14 @@ button:hover {
     transition: background-color 0.3s ease;
 }
 
-#choices button p {
+.choices button p {
     margin: 0;
 }
 
-#choices button:focus {
+.choices button:focus {
     outline: none;
 }
 
-#choices button:hover {
+.choices button:hover {
     background-color: #f0f0f0;
 }
