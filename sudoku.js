@@ -126,7 +126,7 @@ var originalSudoku = randomSudoku;
 randomSudoku = removeSome(randomSudoku);
 displaySudoku(randomSudoku);
 
-var activeButton = "";
+var activeButton = " ";
 
 function boardButtonClick (buttonId) {
     let p = document.getElementById(buttonId + "t");
