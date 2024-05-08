@@ -3,28 +3,28 @@ function generateRandomSudoku() {
     for (var i = 0; i < 9; i++) {
         grid[i] = [];
         for (var j = 0; j < 9; j++) {
-            grid[i][j] = 0; 
+            grid[i][j] = 0;
         }
     }
-    solveSudoku(grid); 
+    solveSudoku(grid);
     return grid;
 }
 
 
 function isValid(grid, row, col, num) {
-    
+
     for (var i = 0; i < 9; i++) {
         if (grid[row][i] === num) {
             return false;
         }
     }
-    
+
     for (var j = 0; j < 9; j++) {
         if (grid[j][col] === num) {
             return false;
         }
     }
-    
+
     var startRow = Math.floor(row / 3) * 3;
     var startCol = Math.floor(col / 3) * 3;
     for (var i = startRow; i < startRow + 3; i++) {
@@ -49,14 +49,14 @@ function solveSudoku(grid) {
                         if (solveSudoku(grid)) {
                             return true;
                         }
-                        grid[row][col] = 0; 
+                        grid[row][col] = 0;
                     }
                 }
-                return false; 
+                return false;
             }
         }
     }
-    return true; 
+    return true;
 }
 
 
@@ -72,29 +72,29 @@ function displaySudoku(grid) {
 
 var randomSudoku = generateRandomSudoku();
 var originalSudoku = randomSudoku;
-randomSudoku = removeSome()
+// randomSudoku = removeSome()
 displaySudoku(randomSudoku);
 
 
 function handleHoverEffect(buttonId) {
-    
+
     var row = parseInt(buttonId[0]);
     var col = parseInt(buttonId[1]);
-    
-    
+
+
     document.getElementById(buttonId).classList.add('hover-effect');
-    
-    
+
+
     for (var i = 1; i <= 9; i++) {
         document.getElementById(row + '' + i).classList.add('hover-effect');
     }
-    
-    
+
+
     for (var j = 1; j <= 9; j++) {
         document.getElementById(j + '' + col).classList.add('hover-effect');
     }
-    
-    
+
+
     var startRow = Math.floor((row - 1) / 3) * 3 + 1;
     var startCol = Math.floor((col - 1) / 3) * 3 + 1;
     for (var i = startRow; i < startRow + 3; i++) {
@@ -107,7 +107,7 @@ function handleHoverEffect(buttonId) {
 
 function removeHoverEffect() {
     var cells = document.querySelectorAll('.hover-effect');
-    cells.forEach(function(cell) {
+    cells.forEach(function (cell) {
         cell.classList.remove('hover-effect');
     });
 }
@@ -116,9 +116,10 @@ function removeHoverEffect() {
 for (let i = 1; i <= 9; i++) {
     for (let j = 1; j <= 9; j++) {
         let buttonId = '' + i + j;
-        document.getElementById(buttonId).addEventListener('mouseenter', function() {
+        document.getElementById(buttonId).addEventListener('mouseenter', function () {
             handleHoverEffect(buttonId);
         });
         document.getElementById(buttonId).addEventListener('mouseleave', removeHoverEffect);
     }
 }
+

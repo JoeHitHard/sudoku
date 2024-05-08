@@ -61,6 +61,37 @@ button:hover {
         font-size: 14px;
     }
 }
+
 .hover-effect {
+    background-color: #f0f0f0;
+}
+
+#choices {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#choices button {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+    margin: 5px;
+    padding: 0;
+    border: none;
+    background-color: #ff0;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#choices button p {
+    margin: 0;
+}
+
+#choices button:focus {
+    outline: none;
+}
+
+#choices button:hover {
     background-color: #f0f0f0;
 }
