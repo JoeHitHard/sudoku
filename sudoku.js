@@ -63,18 +63,17 @@ function solveSudoku(grid) {
 function displaySudoku(grid) {
     for (let i = 1; i <= 9; i++) {
         for (let j = 1; j <= 9; j++) {
-            var p = document.getElementById("" + i + j + "t")
-            p.textContent = grid[i - 1][j - 1];
+            let p = document.getElementById("" + i + j + "t")
+            if (grid[i - 1][j - 1] == 0) {
+                p.textContent = "X";
+                let button = document.getElementById("" + i + j)
+                button.classList.add("missing")
+            } else {
+                p.textContent = grid[i - 1][j - 1];
+            }
         }
     }
 }
-
-
-var randomSudoku = generateRandomSudoku();
-var originalSudoku = randomSudoku;
-// randomSudoku = removeSome()
-displaySudoku(randomSudoku);
-
 
 function handleHoverEffect(buttonId) {
 
@@ -112,6 +111,20 @@ function removeHoverEffect() {
     });
 }
 
+function removeSome(randomSudoku) {
+    let remove = Math.floor(Math.random() * 11) + 10;
+    for (let i = 1; i <= remove; i++) {
+        let row = Math.floor(Math.random() * 9);
+        let column = Math.floor(Math.random() * 9);
+        randomSudoku[row][column] = 0;
+    }
+    return randomSudoku;
+}
+
+var randomSudoku = generateRandomSudoku();
+var originalSudoku = randomSudoku;
+randomSudoku = removeSome(randomSudoku);
+displaySudoku(randomSudoku);
 
 for (let i = 1; i <= 9; i++) {
     for (let j = 1; j <= 9; j++) {
