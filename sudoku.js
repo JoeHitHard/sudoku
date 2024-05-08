@@ -113,7 +113,7 @@ function removeEffect(effect) {
 
 function removeSome(randomSudoku) {
     let remove = Math.floor(Math.random() * 11) + 10;
-    for (let i = 1; i < remove; i++) {
+    for (let i = 1; i <= remove; i++) {
         let row = Math.floor(Math.random() * 9);
         let column = Math.floor(Math.random() * 9);
         randomSudoku[row][column] = 0;
