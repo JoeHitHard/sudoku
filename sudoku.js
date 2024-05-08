@@ -75,22 +75,30 @@ function displaySudoku(grid) {
     }
 }
 
+function addEffect (buttonId, effect) {
+    document.getElementById(buttonId).classList.add(effect);
+}
+
+function deleteEffect (buttonId, effect) {
+    document.getElementById(buttonId).classList.remove(effect);
+}
+
 function handleAddEffect(buttonId, effect) {
 
     var row = parseInt(buttonId[0]);
     var col = parseInt(buttonId[1]);
 
 
-    document.getElementById(buttonId).classList.add(effect);
+    addEffect(buttonId, effect);
 
 
     for (var i = 1; i <= 9; i++) {
-        document.getElementById(row + '' + i).classList.add(effect);
+        addEffect(row + '' + i, effect);
     }
 
 
     for (var j = 1; j <= 9; j++) {
-        document.getElementById(j + '' + col).classList.add(effect);
+        addEffect(j + '' + col, effect);
     }
 
 
@@ -98,7 +106,7 @@ function handleAddEffect(buttonId, effect) {
     var startCol = Math.floor((col - 1) / 3) * 3 + 1;
     for (var i = startRow; i < startRow + 3; i++) {
         for (var j = startCol; j < startCol + 3; j++) {
-            document.getElementById(i + '' + j).classList.add(effect);
+            addEffect(i + '' + j, effect);
         }
     }
 }
@@ -125,17 +133,18 @@ var randomSudoku = generateRandomSudoku();
 var originalSudoku = randomSudoku;
 randomSudoku = removeSome(randomSudoku);
 displaySudoku(randomSudoku);
-
+document.getElementById("choices").style.display = "none"
 var activeButton = "";
 
 function boardButtonClick (buttonId) {
-    let p = document.getElementById(buttonId + "t");
-    if (p.textContent != "X") {
+    let b = document.getElementById(buttonId);
+    if (!b.classList.contains("missing")) {
         return;
     }
     if (buttonId == activeButton) {
         removeEffect("selected");
         activeButton = "";
+        document.getElementById("choices").style.display = "none"
         return;
     }
     if (buttonId != activeButton && activeButton != "") {
@@ -143,9 +152,31 @@ function boardButtonClick (buttonId) {
     }
     activeButton = buttonId;
     handleAddEffect(buttonId, "selected");
+    document.getElementById("choices").style.display = "flex"
+}
+
+function choiceButtonClicked (choiceButtonId) {
+    let column = activeButton[1] - 1;
+    let row = activeButton[0] - 1;
+    if (document.getElementById(activeButton + "t").textContent == choiceButtonId[0]) {
+        return;
+    }
+    if (!isValid(randomSudoku, row, column, parseInt(choiceButtonId[0]))) {
+        addEffect(activeButton, "error")
+        deleteEffect(activeButton, "good")
+    } else {
+        addEffect(activeButton, "good")
+        deleteEffect(activeButton, "error")
+    }
+    document.getElementById(activeButton + "t").textContent = parseInt(choiceButtonId[0]);
+    randomSudoku[row][column] = parseInt(choiceButtonId[0]);
 }
 
 for (let i = 1; i <= 9; i++) {
+    let choiceButtonId = i + "c";
+    document.getElementById(choiceButtonId).addEventListener('click', function () {
+        choiceButtonClicked(choiceButtonId);
+    });
     for (let j = 1; j <= 9; j++) {
         let buttonId = '' + i + j;
         document.getElementById(buttonId).addEventListener('click', function () {

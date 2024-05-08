@@ -51,7 +51,7 @@ button:hover {
 }
 
 
-/* @media screen and (max-width: 600px) {
+@media screen and (max-width: 600px) {
     .container {
         padding: 10px;
     }
@@ -61,14 +61,18 @@ button:hover {
         height: 30px;
         font-size: 14px;
     }
-} */
+}
 
 .hover-effect {
     background-color: #f0f0f0;
 }
 
 .hover-effect.selected {
-    background-color: #00ff00;
+    background-color: #ddff00;
+}
+
+.hover-effect.selected.missing {
+    background-color: #ffff00;
 }
 
 .missing {
@@ -76,6 +80,14 @@ button:hover {
 }
 
 .selected {
+    background-color: #ddff00;
+}
+
+.error {
+    background-color: #ff0000;
+}
+
+.good {
     background-color: #00ff00;
 }
 
@@ -108,4 +120,7 @@ button:hover {
 
 .choices button:hover {
     background-color: #f0f0f0;
+}
+.choice-container {
+    height: 200px;
 }
