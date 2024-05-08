@@ -98,7 +98,7 @@ function handleAddEffect(buttonId, effect) {
     var startCol = Math.floor((col - 1) / 3) * 3 + 1;
     for (var i = startRow; i < startRow + 3; i++) {
         for (var j = startCol; j < startCol + 3; j++) {
-            document.getElementById(i + '' + j ).classList.add(effect);
+            document.getElementById(i + '' + j).classList.add(effect);
         }
     }
 }
@@ -134,15 +134,15 @@ function boardButtonClick (buttonId) {
         return;
     }
     if (buttonId == activeButton) {
-        document.getElementById(activeButton).classList.remove('selected');
+        removeEffect("selected");
         activeButton = "";
         return;
     }
     if (buttonId != activeButton && activeButton != "") {
-        document.getElementById(activeButton).classList.remove('selected');
+        removeEffect("selected");
     }
     activeButton = buttonId;
-    document.getElementById(buttonId).classList.add('selected');
+    handleAddEffect(buttonId, "selected");
 }
 
 for (let i = 1; i <= 9; i++) {
