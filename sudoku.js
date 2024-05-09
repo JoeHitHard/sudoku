@@ -194,7 +194,7 @@ function displayGame(remove) {
     randomSudoku = removeSome(randomSudoku, remove);
     displaySudoku(randomSudoku);
     document.getElementById("choices").style.display = "none"
-    document.getElementById("board").style.display = "flex"
+    document.getElementById("board").style.display = "block"
     activeButton = "";
     document.getElementById("difficulty-selector").style.display = "none"
 

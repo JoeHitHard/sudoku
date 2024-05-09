@@ -1,8 +1,8 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    margin: 0;
-    padding: 0;
+    background-color: #000;
+
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -11,10 +11,8 @@ body {
 
 .container {
     max-width: 600px;
-    padding: 10px;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #000;
+    color: #fff;
     text-align: center;
 }
 
@@ -26,16 +24,10 @@ button {
     width: 40px;
     height: 40px;
     font-size: 16px;
-    margin: 1px;
-    padding: 0;
     border: none;
     background-color: #fff;
     cursor: pointer;
     transition: background-color 0.3s ease;
-}
-
-button p {
-    margin: 0;
 }
 
 button:focus {
@@ -53,10 +45,6 @@ button:hover {
 
 
 @media screen and (max-width: 600px) {
-    .container {
-        padding: 10px;
-    }
-
     button {
         width: 30px;
         height: 30px;
@@ -65,19 +53,15 @@ button:hover {
 }
 
 .hover-effect {
-    background-color: #f0f0f0;
+    background-color: #b5b5b5;
 }
 
 .hover-effect.selected {
-    background-color: #ddff00;
-}
-
-.hover-effect.selected.missing {
     background-color: #ffff00;
 }
 
 .hover-effect.selected.missing {
-    background-color: #ffff00;
+    background-color: #88ff00;
 }
 
 .hover-effect.good.missing {
@@ -86,7 +70,7 @@ button:hover {
 
 
 .selected.missing {
-    background-color: #ffff00;
+    background-color: #88ff00;
 }
 
 .selected.missing.good {
@@ -103,7 +87,7 @@ button:hover {
 
 .menu-button {
     width: max-content;
-    padding: 5px;
+
 }
 
 .missing {
@@ -134,27 +118,17 @@ button:hover {
     background-color: #00ff00;
 }
 
-.board {
-    padding-left: 10px;
-}
-
 .choices {
     display: flex;
     justify-content: center;
-    margin-top: 20px;
+
 }
 
 .choices button {
-    margin: 5px;
-    padding: 0;
     border: none;
     background-color: #ff0;
     cursor: pointer;
     transition: background-color 0.3s ease;
-}
-
-.choices button p {
-    margin: 0;
 }
 
 .choices button:focus {
@@ -167,4 +141,24 @@ button:hover {
 
 .choice-container {
     height: 200px;
+}
+
+.row {
+    display: flex;
+    padding: 5px;
+    padding-top: 0px;
+
+}
+
+.block {
+    display: block;
+    padding: 2.5px;
+    padding-top: 0px;
+
+}
+
+.block-row {
+    display: block;
+    padding: 2.5px;
+    padding-top: 0px;
 }
