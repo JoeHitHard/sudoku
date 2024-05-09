@@ -9,13 +9,14 @@ body {
     height: 100vh;
 }
 
-/* .container {
+.container {
     max-width: 600px;
-    padding: 20px;
+    padding: 10px;
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-} */
+    text-align: center;
+}
 
 h1 {
     text-align: center;
@@ -75,12 +76,54 @@ button:hover {
     background-color: #ffff00;
 }
 
+.hover-effect.selected.missing {
+    background-color: #ffff00;
+}
+
+.hover-effect.good.missing {
+    background-color: #00ff00;
+}
+
+
+.selected.missing {
+    background-color: #ffff00;
+}
+
+.selected.missing.good {
+    background-color: #00ff00;
+}
+
+.selected.missing.error {
+    background-color: #ff0000;
+}
+
+.hover-effect.missing {
+    background-color: #fda8a8;
+}
+
+.menu-button {
+    width: max-content;
+    padding: 5px;
+}
+
 .missing {
     background-color: #fda8a8;
 }
 
 .selected {
     background-color: #ddff00;
+}
+
+.easy {
+    background-color: #00ff00;
+}
+
+.medium {
+    background-color: #ffff00;
+}
+
+.hard {
+    background-color: #ff0000;
 }
 
 .error {
@@ -92,7 +135,7 @@ button:hover {
 }
 
 .board {
-    padding-left: 20px;
+    padding-left: 10px;
 }
 
 .choices {
@@ -121,6 +164,7 @@ button:hover {
 .choices button:hover {
     background-color: #f0f0f0;
 }
+
 .choice-container {
     height: 200px;
 }
